@@ -90,8 +90,8 @@ function Servicos() {
             ) : (
               <form onSubmit={submit} className="grid gap-4" noValidate>
                 <div className="grid gap-4 md:grid-cols-2">
-                  <F label="Nome" err={errors.name}><input name="name" className={field} autoComplete="name" /></F>
-                  <F label="E-mail" err={errors.email}><input name="email" type="email" className={field} autoComplete="email" /></F>
+                  <F label="Nome" err={errors["name"]}><input name="name" className={field} autoComplete="name" /></F>
+                  <F label="E-mail" err={errors["email"]}><input name="email" type="email" className={field} autoComplete="email" /></F>
                 </div>
                 <div className="grid gap-4 md:grid-cols-3">
                   <F label="Empresa (opcional)"><input name="company" className={field} /></F>
@@ -107,7 +107,7 @@ function Servicos() {
                     </select>
                   </F>
                 </div>
-                <F label="Sobre o projeto" err={errors.message}><textarea name="message" rows={6} className={field} /></F>
+                <F label="Sobre o projeto" err={errors["message"]}><textarea name="message" rows={6} className={field} /></F>
                 <button disabled={busy} className={`${btn} justify-self-start`}>{busy ? "Enviando…" : "Enviar pedido"}</button>
               </form>
             )}

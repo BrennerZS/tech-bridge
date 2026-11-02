@@ -56,14 +56,14 @@ export function Reveal({ children, className, as: Tag = "div" }: { children: Rea
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setIn(true); io.disconnect(); } }, { threshold: 0.12 });
+    const io = new IntersectionObserver(([e]) => { if (e?.isIntersecting) { setIn(true); io.disconnect(); } }, { threshold: 0.12 });
     io.observe(el);
     return () => io.disconnect();
   }, []);
   return <Tag ref={ref} className={cn("reveal", inView && "in", className)}>{children}</Tag>;
 }
 
-export function Avatar({ path, name, size = 36 }: { path?: string | null; name: string; size?: number }) {
+export function Avatar({ path, name, size = 36 }: { path?: string | null | undefined; name: string; size?: number }) {
   const url = useMediaUrl(path);
   return (
     <span

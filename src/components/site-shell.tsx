@@ -14,7 +14,7 @@ const NAV = [
   { to: "/sobre", label: "Sobre" },
   { to: "/comunidade", label: "Comunidade" },
   { to: "/feed", label: "Feed" },
-  { to: "/chat/geral", label: "Conversas" },
+  { to: "/chat/$room", label: "Conversas" },
   { to: "/projetos", label: "Projetos" },
   { to: "/oportunidades", label: "Vagas" },
 ] as const;
@@ -53,9 +53,9 @@ export function SiteHeader() {
         </Link>
         <nav className="ml-4 hidden items-center gap-1 lg:flex" aria-label="Principal">
           {NAV.map((n) => {
-            const active = path.startsWith(n.to.replace("/geral", ""));
+            const active = path.startsWith(n.to.replace("/$room", ""));
             return (
-              <Link key={n.to} to={n.to} onClick={() => play("tick")}
+              <Link key={n.to} to={n.to} params={{ room: "geral" } as never} onClick={() => play("tick")}
                 className={cn("rounded-full px-3 py-1.5 text-sm transition-colors hover:bg-accent", active && "bg-foreground text-background hover:bg-foreground")}>
                 {n.label}
               </Link>
@@ -87,7 +87,7 @@ export function SiteHeader() {
         <div className="page-enter border-t bg-background lg:hidden">
           <nav className="mx-auto grid max-w-7xl gap-px px-4 py-4" aria-label="Menu móvel">
             {NAV.map((n, i) => (
-              <Link key={n.to} to={n.to} className="flex items-baseline justify-between border-b py-3 font-display text-3xl">
+              <Link key={n.to} to={n.to} params={{ room: "geral" } as never} className="flex items-baseline justify-between border-b py-3 font-display text-3xl">
                 {n.label}<span className="label-mono text-muted-foreground">0{i + 1}</span>
               </Link>
             ))}
