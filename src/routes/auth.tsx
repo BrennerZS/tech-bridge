@@ -20,12 +20,12 @@ function Auth() {
     const f = Object.fromEntries(new FormData(e.currentTarget)) as Record<string, string>;
     setBusy(true);
     if (mode === "in") {
-      const { error } = await supabase.auth.signInWithPassword({ email: f.email, password: f.password });
+      const { error } = await supabase.auth.signInWithPassword({ email: String(f["email"]), password: String(f["password"]) });
       setBusy(false);
       if (error) { play("error"); toast.error("E-mail ou senha incorretos"); return; }
       play("success"); void navigate({ to: "/" });
     } else {
-      const { error } = await supabase.auth.signUp({ email: f.email, password: f.password, options: { emailRedirectTo: window.location.origin, data: { username: f.username, display_name: f.username } } });
+      const { error } = await supabase.auth.signUp({ email: String(f["email"]), password: String(f["password"]), options: { emailRedirectTo: window.location.origin, data: { username: String(f["username"]), display_name: String(f["username"]) } } });
       setBusy(false);
       if (error) { play("error"); toast.error(error.message); return; }
       play("success"); toast.success("Confira seu e-mail para confirmar a conta.");

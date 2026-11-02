@@ -118,7 +118,7 @@ function Servicos() {
   );
 }
 
-function F({ label, err, children }: { label: string; err?: string; children: React.ReactNode }) {
+function F({ label, err, children }: { label: string; err?: string | undefined; children: React.ReactNode }) {
   return (
     <label className="grid gap-1.5">
       <span className="label-mono text-muted-foreground">{label}</span>

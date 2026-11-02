@@ -27,7 +27,7 @@ const TERMINAL = [
 
 function Home() {
   const [svc, setSvc] = useState(0);
-  const s = SERVICES[svc];
+  const s = SERVICES[svc]!;
   return (
     <div>
       <section className="grid-paper border-b">
@@ -53,7 +53,7 @@ function Home() {
                 <button
                   className="opacity-60 hover:opacity-100"
                   aria-label="Copiar comando"
-                  onClick={() => { void navigator.clipboard.writeText(TERMINAL[0].slice(2)); play("copy"); toast.success("Comando copiado"); }}
+                  onClick={() => { void navigator.clipboard.writeText(TERMINAL[0]!.slice(2)); play("copy"); toast.success("Comando copiado"); }}
                 ><Copy className="size-3.5" /></button>
               </div>
               {TERMINAL.map((l, i) => <p key={l} className={i === TERMINAL.length - 1 ? "caret" : "opacity-90"}>{l}</p>)}

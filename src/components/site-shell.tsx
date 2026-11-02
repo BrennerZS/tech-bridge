@@ -66,7 +66,7 @@ export function SiteHeader() {
           <div className="hidden sm:block"><SoundToggle /></div>
           {user ? (
             <>
-              <Link to="/dashboard" search={{ tab: "notificacoes" }} className="relative rounded-full p-2 hover:bg-accent" aria-label={`Notificações (${unread} não lidas)`}>
+              <Link to="/dashboard" className="relative rounded-full p-2 hover:bg-accent" aria-label={`Notificações (${unread} não lidas)`}>
                 <Bell className="size-4" />
                 {unread > 0 && <span className="absolute -right-0.5 -top-0.5 min-w-4 rounded-full bg-signal px-1 text-center font-mono text-[10px] text-signal-foreground">{unread > 9 ? "9+" : unread}</span>}
               </Link>
